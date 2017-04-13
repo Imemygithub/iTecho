@@ -1,0 +1,11 @@
+﻿<div class="col-sm-9" ng-controller="homeController" ngcloak>
+    <div class="row" style="width: 90%;">
+        <div class="list-group" style="width: 90%;">
+            <a href="#blogView" class="list-group-item" ng-repeat="blog in blogs track by $index">
+                <h4 class="list-group-item-heading" bind-once>{{blog.blogTitle}}</h4>
+                <small class='badge badge-default pull-right' bind-once>{{blog.blogCategory}}</small>
+                <p class="list-group-item-text" bind-once>{{blog.blogBody}}</p>
+            </a>
+        </div>
+    </div>
+</div>

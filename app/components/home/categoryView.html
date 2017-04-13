@@ -1,0 +1,33 @@
+﻿<div class="col-sm-9" ng-controller="homeController" ngcloak>
+    <div class="row">
+        <div class="col-lg-12" ng-show="categories.length == 0" style="width: 90%;">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <span class="badge">0</span>
+                    There is no Categories
+                </li>
+            </ul>
+            <hr style="width: 90%;" />
+        </div>
+        <div class="col-lg-12">           
+            <ul class="list-group" style="width: 90%;">
+                <li class="list-group-item ng-scope" ng-repeat="item in blogs | groupBy: 'blogCategory'">
+                    <span class="badge" bind-once>{{item.length}}</span>
+                    <a href="#blogView" bind-once>{{item[0].blogCategory}}</a>
+                </li>
+            </ul>
+        </div>        
+        <div class="col-lg-12">
+            <div class="" style="width: 90%;"  role="alert">{{successMsg}}</div>
+            <form class="ng-valid ng-dirty">
+                <input ng-model="category.categoryName" style="width: 90%;" placeholder="Category Name" class="form-control ng-valid ng-dirty" type="text">
+                <!-- ngRepeat: error in errors.name -->
+                <input ng-model="category.categoryDescription" style="width: 90%;" placeholder="Description" class="form-control ng-valid ng-dirty" type="text">
+                <br />
+                <button class="btn btn-success" ng-click="addCategory(category)">
+                    Add Category !
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

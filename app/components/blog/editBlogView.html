@@ -1,0 +1,16 @@
+﻿<div class="col-sm-9" ng-controller="blogController" ngcloak>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="" style="width: 90%;" role="alert">{{successMsg}}</div>
+            <form class="ng-valid ng-dirty">
+                <input ng-model="eBlog.blogTitle" style="width: 90%;" value="{{eBlog.blogTitle}}" class="form-control ng-valid ng-dirty" type="text">
+                <!-- ngRepeat: error in errors.name -->
+                <input ng-model="eBlog.blogBody" style="width: 90%;" value="{{eBlog.blogBody}}" class="form-control ng-valid ng-dirty" type="text">
+                <br />
+                <button class="btn btn-success" ng-click="editBlog(eBlog)">
+                    Save Blog !
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

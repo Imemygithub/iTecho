@@ -1,0 +1,43 @@
+﻿<div class="col-sm-9" ng-controller="blogController" ngcloak>
+    <div class="row">
+        <div class="col-lg-12" ng-show="blogs.length ==0">
+            <h4 style="width: 90%;">There's nothing here...</h4>
+            <p style="width: 90%;">Be the first to post on this Forum below!</p>
+            <hr style="width: 90%;" />
+        </div>
+        <div class="col-lg-12 ng-scope" ng-repeat="blog in filteredBlogs">            
+            <h4 style="width: 90%;" bind-once>{{blog.blogTitle}} <div class="pull-right" style="font-size: 12px;"><small class="pull-right" style="font-size: 12px;">{{blog.blogPostDate| date:'MM/dd/yyyy hh:mm:ss'}}</small></div></h4>
+            <p style="width: 90%;" bind-once>{{blog.blogBody}}</p>
+            <div class="row" style="width: 90%;"><button type="button" class="btn btn-default btn-sm btn-primary-outline" ng-click="goEdit(blog)"><span class="glyphicon glyphicon-edit"></span></button><button type="button" class="btn btn-default btn-sm btn-primary-outline pull-right" ng-click="deleteBlog(blog)"><span class="glyphicon glyphicon-trash"></span></button></div>
+        </div>
+       
+            <!--Pagination div -->
+            <pagination ng-model="currentPage"
+                        total-items="blogs.length"
+                        max-size="maxSize"
+                        items-per-page="numPerPage"
+                        boundary-links="true">
+            </pagination>
+        
+</div>
+    <div class="row">
+        <form class="ng-valid ng-dirty">
+
+            <input ng-model="blog.blogTitle" style="width: 90%;" placeholder="Title of Blog" class="form-control ng-valid ng-dirty" type="text">
+
+            <select class="form-control" style="width: 90%;" ng-model="blog.blogCategory">
+                <option value="">Select Category</option>
+                <option ng-repeat="category in categories track by $index" value="{{category.categoryName}}">
+                    {{category.categoryName}}
+                </option>
+            </select>
+
+            <textarea ng-model="blog.blogBody" rows="4" style="width: 90%;" placeholder="Content of Blog" class="form-control ng-valid ng-dirty"></textarea>
+            <!-- ngRepeat: error in errors.body -->
+            <br />
+            <button class="btn btn-success" ng-click="addBlog(blog)">
+                Post!
+            </button>
+        </form>
+    </div>
+</div>
